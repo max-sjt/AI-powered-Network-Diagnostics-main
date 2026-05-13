@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1500</width>
+    <height>960</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WeakNet Visual Dashboard</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="rootLayout">
+    <property name="spacing">
+     <number>18</number>
+    </property>
+    <property name="leftMargin">
+     <number>20</number>
+    </property>
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+    <property name="rightMargin">
+     <number>20</number>
+    </property>
+    <property name="bottomMargin">
+     <number>20</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="heroFrame">
+      <layout class="QVBoxLayout" name="heroLayout">
+       <property name="spacing">
+        <number>14</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>22</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>22</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="heroTitleLabel">
+         <property name="text">
+          <string>WeakNet Windows 可视化诊断台</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="heroSubtitleLabel">
+         <property name="text">
+          <string>把 RTT、TCP 丢包、RSSI、流量、质量评分、日志分析和知识库诊断，整合AI与底层网络基础设施</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="controlsRowLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="targetCaptionLabel">
+           <property name="text">
+            <string>诊断目标</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="targetEdit">
+           <property name="placeholderText">
+            <string>例如 223.5.5.5 / 8.8.8.8 / www.example.com</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="applyTargetButton">
+           <property name="text">
+            <string>应用目标</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="refreshTargetButton">
+           <property name="text">
+            <string>立即刷新</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="mainTabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="overviewPage">
+       <attribute name="title">
+        <string>实时总览</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="overviewLayout">
+        <property name="spacing">
+         <number>16</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="metricCardsRowLayout">
+          <property name="spacing">
+           <number>14</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="overallCardFrame">
+            <layout class="QVBoxLayout" name="overallCardLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="overallTitleLabel">
+               <property name="text">
+                <string>综合质量</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="overallValueLabel">
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="overallSubtitleLabel">
+               <property name="text">
+                <string>等待采集</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="interfaceCardFrame">
+            <layout class="QVBoxLayout" name="interfaceCardLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="interfaceCardTitleLabel">
+               <property name="text">
+                <string>当前上网接口</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="interfaceCardValueLabel">
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="interfaceCardSubtitleLabel">
+               <property name="text">
+                <string>等待采集</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="latencyCardFrame">
+            <layout class="QVBoxLayout" name="latencyCardLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="latencyTitleLabel">
+               <property name="text">
+                <string>RTT / 丢包</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="latencyValueLabel">
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="latencySubtitleLabel">
+               <property name="text">
+                <string>等待采集</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="throughputCardFrame">
+            <layout class="QVBoxLayout" name="throughputCardLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="throughputTitleLabel">
+               <property name="text">
+                <string>吞吐 / 连接</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="throughputValueLabel">
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="throughputSubtitleLabel">
+               <property name="text">
+                <string>等待采集</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="overviewContentRowLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="interfaceSectionFrame">
+            <layout class="QVBoxLayout" name="interfaceSectionLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="interfaceSectionTitleLabel">
+               <property name="text">
+                <string>接口状态面板</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="interfaceTable"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="overviewRightColumnLayout">
+            <property name="spacing">
+             <number>16</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="overviewChartsRowLayout">
+              <property name="spacing">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="TrendChartWidget" name="rttChart" native="true"/>
+              </item>
+              <item>
+               <widget class="TrendChartWidget" name="trafficChart" native="true"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="overviewBottomRowLayout">
+              <property name="spacing">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="eventSectionFrame">
+                <layout class="QVBoxLayout" name="eventSectionLayout">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>18</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>16</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>18</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>16</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="eventSectionTitleLabel">
+                   <property name="text">
+                    <string>事件时间线</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QListWidget" name="eventList"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="liveNarrativeFrame">
+                <layout class="QVBoxLayout" name="liveNarrativeLayout">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>18</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>16</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>18</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>16</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="liveNarrativeTitleLabel">
+                   <property name="text">
+                    <string>诊断建议</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTextEdit" name="liveNarrativeEdit"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="logPage">
+       <attribute name="title">
+        <string>项目日志回放</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="logPageLayout">
+        <property name="spacing">
+         <number>16</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="logActionRowLayout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="sampleLogButton">
+            <property name="text">
+             <string>载入示例日志</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="openLogButton">
+            <property name="text">
+             <string>打开日志文件</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="parseLogButton">
+            <property name="text">
+             <string>解析当前文本</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="logActionRowSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="logContentRowLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="logInputSectionFrame">
+            <layout class="QVBoxLayout" name="logInputSectionLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="logInputSectionTitleLabel">
+               <property name="text">
+                <string>项目日志输入</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPlainTextEdit" name="logInputEdit">
+               <property name="placeholderText">
+                <string>粘贴 log_capture.py 输出，或直接打开日志文件</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="logRightColumnLayout">
+            <property name="spacing">
+             <number>16</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="logTimeRowLayout">
+              <item>
+               <widget class="QLabel" name="logTimeCaptionLabel">
+                <property name="text">
+                 <string>时间点</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="logTimeCombo"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QFrame" name="logMetricsSectionFrame">
+              <layout class="QVBoxLayout" name="logMetricsSectionLayout">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>18</number>
+               </property>
+               <property name="topMargin">
+                <number>16</number>
+               </property>
+               <property name="rightMargin">
+                <number>18</number>
+               </property>
+               <property name="bottomMargin">
+                <number>16</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="logMetricsSectionTitleLabel">
+                 <property name="text">
+                  <string>时间点指标汇总</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTableWidget" name="logMetricsTable"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="logChartsRowLayout">
+              <property name="spacing">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="TrendChartWidget" name="logRttChart" native="true"/>
+              </item>
+              <item>
+               <widget class="TrendChartWidget" name="logTrafficChart" native="true"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QFrame" name="logNarrativeSectionFrame">
+              <layout class="QVBoxLayout" name="logNarrativeSectionLayout">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>18</number>
+               </property>
+               <property name="topMargin">
+                <number>16</number>
+               </property>
+               <property name="rightMargin">
+                <number>18</number>
+               </property>
+               <property name="bottomMargin">
+                <number>16</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="logNarrativeSectionTitleLabel">
+                 <property name="text">
+                  <string>日志诊断报告</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTextEdit" name="logNarrativeEdit"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="aiPage">
+       <attribute name="title">
+        <string>AI RAG 诊断</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="aiPageLayout">
+        <property name="spacing">
+         <number>16</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="ragControlFrame">
+          <layout class="QVBoxLayout" name="ragControlFrameLayout">
+           <property name="spacing">
+            <number>12</number>
+           </property>
+           <property name="leftMargin">
+            <number>18</number>
+           </property>
+           <property name="topMargin">
+            <number>16</number>
+           </property>
+           <property name="rightMargin">
+            <number>18</number>
+           </property>
+           <property name="bottomMargin">
+            <number>16</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="ragControlTitleLabel">
+             <property name="text">
+              <string>Python RAG 联动入口</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="ragControlGridLayout">
+             <property name="horizontalSpacing">
+              <number>12</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>10</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="pythonCommandCaptionLabel">
+               <property name="text">
+                <string>Python 命令</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="pythonCommandEdit">
+               <property name="text">
+                <string>python</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="ragTimeCaptionLabel">
+               <property name="text">
+                <string>分析时间点</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QComboBox" name="ragTimeCombo"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="apiKeyCaptionLabel">
+               <property name="text">
+                <string>API Key</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="apiKeyEdit">
+               <property name="echoMode">
+                <enum>QLineEdit::EchoMode::Password</enum>
+               </property>
+               <property name="placeholderText">
+                <string>可留空，优先使用环境变量或回退本地分析</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="ragScriptCaptionLabel">
+               <property name="text">
+                <string>脚本入口</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLineEdit" name="ragScriptPathEdit">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="ragActionRowLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="syncRagSourceButton">
+               <property name="text">
+                <string>从日志页同步</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="runRagButton">
+               <property name="text">
+                <string>运行 AI RAG 分析</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="ragStatusLabel">
+               <property name="text">
+                <string>等待分析</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ragMainRowLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="aiLogPreviewFrame">
+            <layout class="QVBoxLayout" name="aiLogPreviewLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="aiLogPreviewTitleLabel">
+               <property name="text">
+                <string>RAG 输入日志</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPlainTextEdit" name="aiLogPreviewEdit">
+               <property name="placeholderText">
+                <string>这里会接收项目日志，也可以直接粘贴你要送入 RAG 分析的文本</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="aiResultFrame">
+            <layout class="QVBoxLayout" name="aiResultLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="aiResultTitleLabel">
+               <property name="text">
+                <string>AI RAG 输出</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="aiResultEdit"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="knowledgePage">
+       <attribute name="title">
+        <string>知识库与兼容说明</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="knowledgePageLayout">
+        <property name="spacing">
+         <number>16</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="knowledgeSectionFrame">
+          <layout class="QVBoxLayout" name="knowledgeSectionLayout">
+           <property name="spacing">
+            <number>12</number>
+           </property>
+           <property name="leftMargin">
+            <number>18</number>
+           </property>
+           <property name="topMargin">
+            <number>16</number>
+           </property>
+           <property name="rightMargin">
+            <number>18</number>
+           </property>
+           <property name="bottomMargin">
+            <number>16</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="knowledgeSectionTitleLabel">
+             <property name="text">
+              <string>能力映射与阈值</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="knowledgeTable"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="compatibilitySectionFrame">
+          <layout class="QVBoxLayout" name="compatibilitySectionLayout">
+           <property name="spacing">
+            <number>12</number>
+           </property>
+           <property name="leftMargin">
+            <number>18</number>
+           </property>
+           <property name="topMargin">
+            <number>16</number>
+           </property>
+           <property name="rightMargin">
+            <number>18</number>
+           </property>
+           <property name="bottomMargin">
+            <number>16</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="compatibilitySectionTitleLabel">
+             <property name="text">
+              <string>Windows 兼容说明</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="compatibilityEdit"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TrendChartWidget</class>
+   <extends>QWidget</extends>
+   <header>trend_chart_widget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

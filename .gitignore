@@ -1,0 +1,44 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.pro.user
+*.suo
+*.user
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Runtime / temporary outputs
+get_reply.bin
+signal_changed.bin
+logs/server/
+*.tmp
+
+# Linux build artifacts
+server/bin/
+server/build/
+client/bin/
+client/lib/
+client/test_client
+*.o
+*.obj
+
+# Qt build artifacts
+qt_dashboard/build/
+qt_dashboard/build_qt6/
+qt_dashboard/moc/
+qt_dashboard/obj/
+qt_dashboard/rcc/
+qt_dashboard/ui/
+.qmake.stash
+
+# AI generated caches / stores
+AI-assisted analysis/__pycache__/
+AI-assisted analysis/network_knowledge_vectorstore_local/
