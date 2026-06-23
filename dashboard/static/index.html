@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WeakNet Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>WeakNet Dashboard</h1>
+        <p id="subtitle">Waiting for parsed metrics...</p>
+      </div>
+      <div class="top-actions">
+        <label class="select-wrap">
+          Window
+          <select id="windowSelect">
+            <option value="5">5m</option>
+            <option value="15" selected>15m</option>
+            <option value="60">60m</option>
+            <option value="240">4h</option>
+          </select>
+        </label>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="status-panel">
+        <div class="quality" id="qualityCard">
+          <span class="label">Network Quality</span>
+          <strong id="qualityLevel">UNKNOWN</strong>
+          <span id="qualityScore">No score</span>
+        </div>
+        <div class="metric">
+          <span>Active Interface</span>
+          <strong id="activeInterface">-</strong>
+        </div>
+        <div class="metric">
+          <span>Gateway</span>
+          <strong id="gatewayIp">-</strong>
+        </div>
+        <div class="metric">
+          <span>Gateway RTT</span>
+          <strong><span id="gatewayRtt">-</span><small>ms</small></strong>
+        </div>
+        <div class="metric">
+          <span>RTT</span>
+          <strong><span id="rttValue">-</span><small id="rttUnit">ms</small></strong>
+        </div>
+        <div class="metric">
+          <span>TCP Loss</span>
+          <strong><span id="lossValue">-</span><small>%</small></strong>
+        </div>
+        <div class="metric">
+          <span>RSSI</span>
+          <strong><span id="rssiValue">-</span><small>dBm</small></strong>
+        </div>
+        <div class="metric">
+          <span>Traffic</span>
+          <strong><span id="trafficValue">-</span><small>MB/s</small></strong>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel trend-panel">
+          <div class="panel-head">
+            <h2>Trends</h2>
+            <span id="pointCount">0 points</span>
+          </div>
+          <canvas id="trendCanvas" width="1200" height="420"></canvas>
+          <div class="legend">
+            <span><i class="rtt"></i>RTT</span>
+            <span><i class="loss"></i>TCP loss</span>
+            <span><i class="traffic"></i>Traffic</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Interfaces</h2>
+          </div>
+          <div id="interfaces" class="interfaces"></div>
+        </article>
+
+        <article class="panel events-panel">
+          <div class="panel-head">
+            <h2>Events</h2>
+            <span id="eventCount">0 events</span>
+          </div>
+          <div id="events" class="events"></div>
+        </article>
+
+        <article class="panel report-panel">
+          <div class="panel-head">
+            <h2>诊断结果</h2>
+            <button id="reportBtn" type="button">生成</button>
+          </div>
+          <div id="report" class="report">
+            <p>点击生成，根据当前缓存的网络指标输出本地诊断结果。</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

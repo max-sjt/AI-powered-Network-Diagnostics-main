@@ -1,0 +1,33 @@
+.agents/
+.codex/
+.git/
+
+# Python environments and caches
+AI-assisted analysis/.venv/
+AI-assisted analysis/.python-packages/
+**/__pycache__/
+*.py[cod]
+
+# Build outputs and binaries
+server/bin/
+server/build/
+client/bin/
+client/lib/
+client/test_client
+*.o
+*.so
+*.a
+*.exe
+
+# Runtime data
+logs/server/*.log
+logs/server/*.pid
+dashboard/*.sqlite3
+*.bin
+
+# Generated eBPF kernel header
+server/vmlinux.h
+
+# Local editor/OS files
+.DS_Store
+Thumbs.db
